@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { capitalize } from '../../util';
+import './currentWeather.css';
 
 class CurrentWeather extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       weather: props.data.get('day-0')
     }
   }
 
   render() {
-    const temperature = this.state.weather.temp.day;
-    const { main, description } = this.state.weather.weather[0];
+    const temperature = Math.round(+this.state.weather.temp.day);
+    const { description } = this.state.weather.weather[0];
+
     return (
-      <div>
-        Today's High
-        <h2>{temperature} &#176; F</h2>
-        <p>{main}</p>
+      <div className="current-weather">
         <p>{capitalize(description)}</p>
+        <h1 className="large-font">{temperature} &#176;F</h1>
       </div>
     );
   }
+}
+
+CurrentWeather.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default CurrentWeather

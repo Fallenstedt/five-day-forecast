@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import FiveDayListItem from '../fiveDayListItem/fiveDayListItem'
+import './fiveDayList.css';
 
 class FiveDayList extends Component {
   constructor(props) {
@@ -11,18 +13,22 @@ class FiveDayList extends Component {
   }
 
   renderDays() {
-    console.log(this.state.weather);
     var fiveDays = [...this.state.weather.values()]
 
     //we are not interested in current day
     fiveDays.shift();
-    
+
     const days = fiveDays.map((day) => {
+      const { icon, description } = day.weather[0],
+      iconUrl = `http://openweathermap.org/img/w/${icon}.png`,
+      iconAlt = `${day.dt}'s icon depicting ${description}`,
+      date = day.dt,
+      temp = day.temp.max;
+
+      const itemProps = { iconUrl, iconAlt, date, temp };
+
       return (
-        <li key={day.dt}>
-          {day.dt} -
-          {day.temp.max}&#176;F
-        </li>
+        <FiveDayListItem {...itemProps} key={date} />
       )
     })
     return days
@@ -30,14 +36,18 @@ class FiveDayList extends Component {
 
   render() {
     return (
-      <div>
-        Five Day Forecast
-        <ul>
+      <div className="five-day">
+        <ul className="five-day-list">
           {this.renderDays()}
         </ul>
       </div>
     )
   }
+}
+
+
+FiveDayList.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default FiveDayList

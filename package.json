@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "es6-map": "^0.1.5",
     "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

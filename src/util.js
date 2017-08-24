@@ -6,7 +6,7 @@ export const listDailyWeather = function(array) {
   const week = new Map()
   array.forEach((values, i) => {
     const day = `day-${i}`
-    values.dt = moment(values.dt*1000).format("dddd Do MMMM") // convert dt to "Wednesday 23rd August"
+    values.dt = moment(values.dt*1000).format("dddd")
     week.set(day, values)
   })
   return week

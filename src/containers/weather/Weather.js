@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../../actions/index';
 import FiveDayList from '../../components/fiveDayList/fiveDayList';
 import CurrentWeather from '../../components/currentWeather/currentWeather';
+import './Weather.css';
 
 
 class Weather extends Component {
@@ -12,7 +14,7 @@ class Weather extends Component {
 
   renderLoading() {
     return (
-      <div>
+      <div className="container center">
         Loading...
       </div>
     )
@@ -20,7 +22,7 @@ class Weather extends Component {
 
   renderWeather() {
     return (
-      <div>
+      <div className="container center">
         <h1>{this.props.city}</h1>
         <CurrentWeather data={this.props.data} />
         <FiveDayList data={this.props.data} />
@@ -53,6 +55,12 @@ function mapStateToProps(state) {
     data: state.weather.data,
     city: state.weather.city,
   }
+}
+
+Weather.propTypes= {
+  isFetching: PropTypes.bool.isRequired,
+  data: PropTypes.object,
+  city: PropTypes.string
 }
 
 export default connect(

@@ -15,13 +15,14 @@ export function fetchWeather() {
     })
     .catch((error) => {
       console.error(error);
+      alert('Unable to retrieve weather data. Please refresh.')
     })
   }
 }
 
 function requestWeather() {
   return {
-    type: types.REQUEST_WEATER
+    type: types.REQUEST_WEATHER
   }
 }
 

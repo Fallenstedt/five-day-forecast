@@ -5,8 +5,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div>
-      Hello World!
+    <div className="background">
       <Weather />
     </div>
   )
