@@ -1,34 +1,43 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 
-export default class FiveDayList extends Component {
+
+class FiveDayList extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      weather: groupWeatherByDay(props.data)
+      weather: props.data
     }
   }
 
-  render() {
+  renderDays() {
     console.log(this.state.weather);
+    var fiveDays = [...this.state.weather.values()]
+
+    //we are not interested in current day
+    fiveDays.shift();
+    
+    const days = fiveDays.map((day) => {
+      return (
+        <li key={day.dt}>
+          {day.dt} -
+          {day.temp.max}&#176;F
+        </li>
+      )
+    })
+    return days
+  }
+
+  render() {
     return (
       <div>
         Five Day Forecast
+        <ul>
+          {this.renderDays()}
+        </ul>
       </div>
     )
   }
-
 }
 
-
-function groupWeatherByDay(list) {
-  const days = new Map()
-  list.forEach( (w) => {
-    const day = moment(w.dt*1000).format("dddd Do MMMM")
-    if( !days[day] ) days[day] = []
-    days[day].push(w)
-  })
-
-  return days;
-}
+export default FiveDayList

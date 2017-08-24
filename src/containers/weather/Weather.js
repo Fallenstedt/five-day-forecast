@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchWeather } from '../../actions/index';
 import FiveDayList from '../../components/fiveDayList/fiveDayList';
+import CurrentWeather from '../../components/currentWeather/currentWeather';
+
 
 class Weather extends Component {
   componentWillMount() {
@@ -20,6 +22,7 @@ class Weather extends Component {
     return (
       <div>
         <h1>{this.props.city}</h1>
+        <CurrentWeather data={this.props.data} />
         <FiveDayList data={this.props.data} />
       </div>
     )
