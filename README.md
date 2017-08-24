@@ -24,8 +24,8 @@ If I had more time, I would have worked longer on unit testing each component an
 * [Redux Thunk](https://github.com/gaearon/redux-thunk) - Thunk middleware for Redux
 * [Axios](https://github.com/mzabriskie/axios) - A promise based HTTP client
 * [create-react-app](https://github.com/facebookincubator/create-react-app) - Create React apps with no build configuration.
-* [Moment]([Open Weather Map](https://openweathermap.org/)) - Date Times with JavaScript
-
+* [Moment](https://momentjs.com/) - Date Times with JavaScript
+* [Open Weather Map](https://openweathermap.org/) - Weather API for Developers
 
 ## Authors
 
